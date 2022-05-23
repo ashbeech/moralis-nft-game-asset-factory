@@ -27,9 +27,6 @@ const masterKey = process.env.MORALIS_MASTER_KEY;
 const apiUrl = process.env.IPFS_API_URL;
 const apiKey = process.env.IPFS_API_KEY;
 
-// Start Moralis session
-Moralis.start({ serverUrl, appId, masterKey });
-
 // Create generative art by using the canvas api
 const init = async () => {
   console.log("");
@@ -55,6 +52,9 @@ const init = async () => {
   console.log("░░░░░░            Asset Factory             ░░░░░░");
   console.log("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
 
+  // Start Moralis session
+  await Moralis.start({ serverUrl, appId, masterKey });
+
   // folder structure for NFT types must conform to naming converntion used here
   let types = [process.env.CHAR_TYPE, process.env.ASTR_TYPE];
 
@@ -72,8 +72,8 @@ const init = async () => {
   let files = [];
   let size = 0;
   let type = "";
-  // TYPE SWITCH (character: i = 0, length-1, astroid: i = 1, length)
-  for (let i = 1; i < types.length; i++) {
+  // TYPE SWITCH (character: i = 0, length-1, asteroid: i = 1, length)
+  for (let i = 0; i < types.length - 1; i++) {
     // num of input files = collection size
     files[`${types[i]}`] = await collectionSize(types[i]);
     // check for hidden files and remove
