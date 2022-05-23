@@ -4,7 +4,7 @@
 
 ## About
 
-Aim: More easily generate tokens and metadata for games integrating NFTs as player-earnable, and tradable, in-game assets.
+Aim: More easily generate tokens, and their metadata, for games integrating NFTs as player earnable, tradable, in-game assets.
 
 ---
 
