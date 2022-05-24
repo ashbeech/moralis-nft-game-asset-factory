@@ -302,7 +302,7 @@ contract AssetFactory is ERC1155, AccessControl, Ownable {
      */
     function addToWhitelist(uint256 _tokenId, address _address)
         external
-        onlyRole(WHITELISTER_ROLE)
+        onlyAdmin
     {
         // Buyer address must not already own.
         require(
@@ -322,7 +322,7 @@ contract AssetFactory is ERC1155, AccessControl, Ownable {
      */
     function removeFromWhitelist(uint256 _tokenId)
         public
-        onlyRole(WHITELISTER_ROLE)
+        onlyAdmin
     {
         require(whitelist[_tokenId].listed, "Address is not on the list.");
         delete whitelist[_tokenId];
